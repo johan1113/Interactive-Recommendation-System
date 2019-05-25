@@ -29,17 +29,29 @@ function processData(allText) {
 
 */
 
-window.addEventListener('load',function(){
+var headers;
+var dataUsers;
+
+window.addEventListener('load', function () {
     var dbData = document.querySelector("#ccc").getAttribute('data-name');
-    console.log(dbData);
+    //console.log(dbData);
     processData(dbData);
+
+    // Run Visual Interaction
+    init();
 });
 
 function processData(allText) {
     var allTextLines = allText.split('\n');
-    var headers = allTextLines[0].split(',');
-    var lines = [];
-
+    headers = allTextLines[0].split(',');
+    console.log(headers);
+    dataUsers = [];
+    for (let index = 1; index < allTextLines.length; index++) {
+        const user = allTextLines[index].split(',');
+        dataUsers.push(user);
+    }
+    console.log(dataUsers);
+    /*
     for (var i=1; i<allTextLines.length; i++) {
         var data = allTextLines[i].split(',');
         if (data.length == headers.length) {
@@ -52,8 +64,8 @@ function processData(allText) {
         }
     }
     // alert(lines);
-
-}   
+*/
+}
 
 window.setInterval(onCanvasClick, 6000);
 ccc.addEventListener("click", onCanvasClick);
@@ -135,7 +147,6 @@ function onCanvasClick(e) {
     simplexNoise = new SimplexNoise();
     fadeTimeStart = undefined;
 }
-
 
 // Functions
 
@@ -239,8 +250,3 @@ function Particle(x, y, color) {
     this.pastX = this.x;
     this.pastY = this.y;
 }
-
-
-// Run
-
-init();

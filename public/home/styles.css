@@ -1,2 +1,113 @@
-html, body {margin: 0; padding: 0;}
-canvas {background-color: #030722; width:100%; height:100%;}
+@import url("https://fonts.googleapis.com/css?family=Rajdhani:500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+canvas {
+  background-color: #030722;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  position: absolute;
+  background: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .brand__icon {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+main .brand__title {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 26px;
+  letter-spacing: 0.415em;
+  color: white;
+}
+
+#header-container {
+  width: 380px;
+  height: 55px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+}
+
+/* Select style here */
+select {
+  color: #030722;
+  width: 380px;
+  padding: 15px;
+  height: 25px;
+  cursor: pointer;
+  background: url("../data/arrow.png") 370px 20px no-repeat white;
+}
+
+select:hover {
+  background-color: transparent;
+  color: white;
+  padding: 15px 5px 15px 25px;
+}
+
+select option {
+  background-color: white;
+  color: gray;
+  width: 380px;
+  padding: 10px 15px;
+  height: 20px;
+  cursor: pointer;
+}
+
+select option:hover {
+  padding-left: 25px;
+  width: 320px;
+  color: #030722;
+}
+/*# sourceMappingURL=styles.css.map */

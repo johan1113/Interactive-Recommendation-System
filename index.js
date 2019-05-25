@@ -16,7 +16,7 @@ app.set('view engine', 'handlebars');
 
 //defninir ruta root o principal
 app.get('/', function (request, response) {
-    console.log("funcionaa")
+    console.log("funcionaa");
 
     // Reading data in utf-8 format 
     // which is a type of character set. 
@@ -34,8 +34,6 @@ app.get('/', function (request, response) {
         //console.log(context.text);
         response.render('home', context);
     })
-
-
 });
 
 app.listen(8000);
