@@ -1,9 +1,7 @@
-var headers;
-var dataUsers;
-
-var serviceOptions = ['What service would you like to use ?', 'KNN', 'Ideal Festival For A Group', 'Ideal Festival For All', 'Music Genre Ideal Festival', 'OUR PRODUCT'];
-
 window.addEventListener('load', function () {
+    var headers;
+    var dataUsers;
+
     var dbData = document.querySelector("#ccc").getAttribute('data-name');
     //console.log(dbData);
     processData(dbData);
@@ -11,46 +9,56 @@ window.addEventListener('load', function () {
     // Run Visual Interaction
     init();
 
-    startButton();
+    calculateKNN();
 });
-
-function startButton() {
-    var btn = document.querySelector('.start-button');
-    if (btn != null) {
-        btn.addEventListener('click', function(){
-            this.preventDefault;
-            var selectedService = document.querySelector('.selected-service').innerHTML;
-            console.log('clickkkk');
-            for (let index = 0; index < serviceOptions.length; index++) {
-                const service = serviceOptions[index];
-                if (selectedService == service) {
-                    if (index != 0) {
-                        btn.style.animation = 'bounce 700ms';
-                        setTimeout(generateServiceUi(this,index), 1000);
-                    } else {
-                        btn.style.animation = 'wiggle 700ms';
-                    }
-                }
-            }
-            setTimeout(function(){ btn.style.animation = 'none'; }, 700);
-        });
-    }
-}
-
-function generateServiceUi(btn, index){
-    btn.setAttribute('href',index);
-}
 
 function processData(allText) {
     var allTextLines = allText.split('\n');
     headers = allTextLines[0].split(',');
-    console.log(headers);
     dataUsers = [];
     for (let index = 1; index < allTextLines.length; index++) {
         const user = allTextLines[index].split(',');
         dataUsers.push(user);
     }
-    console.log(dataUsers);
+}
+
+
+function calculateKNN() {
+    var btn = document.querySelector('.button');
+    btn.addEventListener('click', function () {
+        this.preventDefault;
+        var selUser = document.querySelector('.user-selector');
+        var userIndex;
+        var userName;
+        var quantityNeighbors;
+        for (let index = 0; index < selUser.options.length; index++) {
+            const opt = selUser.options[index];
+            if (opt.selected == true && opt.innerHTML != 'Select an User') {
+                userIndex = parseInt(opt.value);
+                userName = opt.innerHTML;
+                break;
+            }
+        }
+        var quantityTag = document.querySelector('.quantity');
+        if (quantityTag.value != "") {
+            quantityNeighbors = parseInt(quantityTag.value);
+        }
+        if (quantityNeighbors != null && userName != null && userIndex != null) {
+            generateKNNResult(userName, userIndex, quantityNeighbors);
+        } else {
+            btn.style.animation = 'wiggle 700ms';
+            setTimeout(function () { btn.style.animation = 'none'; }, 700);
+        }
+    });
+}
+
+function generateKNNResult(userName, userIndex, quantityNeighbors){
+    var userSelected = dataUsers[userIndex];
+    for (let index = 0; index < dataUsers.length; index++) {
+        if(index != userIndex){
+            
+        }        
+    }
 }
 
 window.setInterval(onCanvasClick, 6000);
@@ -101,11 +109,13 @@ function init() {
 
     canvas.addEventListener('click', onCanvasClick, true);
 
+    /*
     gui = new dat.GUI();
     gui.add(Configs, 'step', 1, 5);
     gui.add(Configs, 'base', 1500, 4000);
     gui.add(Configs, 'zInc', 0.001, 0.01);
     gui.close();
+    */
 
 
     requestAnimationFrame(update);

@@ -1,0 +1,54 @@
+$background-color: #030722;
+
+.button {
+    border: none;
+    background-color: transparent;
+    padding: 1rem;
+    color: #ffffff;
+    font-size: 1rem;
+    position: relative;
+    transition: all 500ms ease;
+    margin-bottom: 2rem;
+    font-family: 'Rajdhani';
+    font-size: 25px;
+}
+
+.button:hover {
+    color: $background-color;
+    cursor: pointer;
+}
+
+.button:after,
+.button:before {
+    content: '';
+    position: absolute;
+    transition: all 1s ease;
+}
+
+/* REVERSE BUTTON */
+.reverse:hover {
+    background-color: rgba(255, 255, 255, 255);
+}
+
+/* WIGGLE BUTTON */
+@keyframes wiggle {
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-10px);
+    }
+
+    40% {
+        transform: translateX(10px);
+    }
+
+    60% {
+        transform: translateX(-5px);
+    }
+
+    80% {
+        transform: translateX(5px);
+    }
+}

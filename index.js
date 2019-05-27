@@ -9,31 +9,58 @@ app.engine('handlebars', hbs());
 //para setear el motor de render a utilizar
 app.set('view engine', 'handlebars');
 
-    // Requiring fs module in which 
-    // readFile function is defined. 
-    const file = require('file-system');
-    const fs = require('fs');
+// Requiring fs module in which 
+// readFile function is defined. 
+const file = require('file-system');
+const fs = require('fs');
+
+var headers;
+var dataUsers = [];
+
+function processData(allText) {
+    var allTextLines = allText.split('\n');
+    headers = allTextLines[0].split(',');
+    for (let index = 1; index < allTextLines.length; index++) {
+        const user = allTextLines[index].split(',');
+        dataUsers.push(user);
+    }
+}
 
 //defninir ruta root o principal
 app.get('/', function (request, response) {
     console.log("funcionaa");
-
     // Reading data in utf-8 format 
-    // which is a type of character set. 
-    // Instead of 'utf-8' it can be  
-    // other character set also like 'ascii' 
-    fs.readFile('./public/data/db.txt', 'utf-8', (err, data) => {
+    fs.readFile('./public/data/db.txt', 'utf-8', (err, dbData) => {
         if (err) throw err;
-
-        // Converting Raw Buffer to text 
-        // data using tostring function. 
-        //console.log(data); 
         var context = {
-            text: data
+            text: dbData
         }
-        //console.log(context.text);
         response.render('home', context);
-    })
+    });
+});
+
+app.get('/1', function (request, response) {
+    console.log('entro a knn');
+    fs.readFile('./public/data/db.txt', 'utf-8', (err, dbData) => {
+        if (err) throw err;
+        processData(dbData);
+        var userNames = [];
+        for (let index = 0; index < dataUsers.length; index++) {
+            const user = dataUsers[index];
+            const objUser = {
+                name: user[1],
+                index: index
+            }
+            userNames.push(objUser);
+        }
+        console.log(userNames);
+        var context = {
+            users: userNames,
+            data: dbData
+        }
+
+        response.render('knn', context);
+    });
 });
 
 app.listen(8000);

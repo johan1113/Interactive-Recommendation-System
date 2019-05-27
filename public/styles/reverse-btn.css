@@ -1,0 +1,78 @@
+.button {
+  border: none;
+  background-color: transparent;
+  padding: 1rem;
+  color: #ffffff;
+  font-size: 1rem;
+  position: relative;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+  margin-bottom: 2rem;
+  font-family: 'Rajdhani';
+  font-size: 25px;
+}
+
+.button:hover {
+  color: #030722;
+  cursor: pointer;
+}
+
+.button:after,
+.button:before {
+  content: '';
+  position: absolute;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+/* REVERSE BUTTON */
+.reverse:hover {
+  background-color: white;
+}
+
+/* WIGGLE BUTTON */
+@-webkit-keyframes wiggle {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  20% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  40% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  60% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  80% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+}
+@keyframes wiggle {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  20% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  40% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  60% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  80% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+}
+/*# sourceMappingURL=reverse-btn.css.map */

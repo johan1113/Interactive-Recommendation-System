@@ -98,7 +98,7 @@
 			}
 
 			// Get select options
-			var options = '<div data-cuteselect-title>' + caption + '</div><div data-cuteselect-options><div data-cuteselect-options-container>';
+			var options = '<div class="selected-service" data-cuteselect-title>' + caption + '</div><div data-cuteselect-options><div data-cuteselect-options-container>';
 			var cells = item.getElementsByTagName('option'); 
 			for (var i = 0; i < cells.length; i++) { 
 				if(cells[i].hasAttribute('disabled')) { continue; }
