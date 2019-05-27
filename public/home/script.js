@@ -1,13 +1,6 @@
-var headers;
-var dataUsers;
-
-var serviceOptions = ['What service would you like to use ?', 'KNN', 'Ideal Festival For A Group', 'Ideal Festival For All', 'Music Genre Ideal Festival', 'OUR PRODUCT'];
+var serviceOptions = ['What service would you like to use ?', 'KNN', 'Ideal Festival For A Person' ,'Ideal Festival For A Group', 'Ideal Festival For All', 'Music Genre Ideal Festival', 'OUR PRODUCT'];
 
 window.addEventListener('load', function () {
-    var dbData = document.querySelector("#ccc").getAttribute('data-name');
-    //console.log(dbData);
-    processData(dbData);
-
     // Run Visual Interaction
     init();
 
@@ -39,18 +32,6 @@ function startButton() {
 
 function generateServiceUi(btn, index){
     btn.setAttribute('href',index);
-}
-
-function processData(allText) {
-    var allTextLines = allText.split('\n');
-    headers = allTextLines[0].split(',');
-    console.log(headers);
-    dataUsers = [];
-    for (let index = 1; index < allTextLines.length; index++) {
-        const user = allTextLines[index].split(',');
-        dataUsers.push(user);
-    }
-    console.log(dataUsers);
 }
 
 window.setInterval(onCanvasClick, 6000);
@@ -101,12 +82,13 @@ function init() {
 
     canvas.addEventListener('click', onCanvasClick, true);
 
+    /*
     gui = new dat.GUI();
     gui.add(Configs, 'step', 1, 5);
     gui.add(Configs, 'base', 1500, 4000);
     gui.add(Configs, 'zInc', 0.001, 0.01);
     gui.close();
-
+    */
 
     requestAnimationFrame(update);
     ctx.lineWidth = 0.7;

@@ -1,3 +1,9 @@
+const rangeMusicGenre = [3, 18];
+const rangeArtist = [19, 64];
+const rangeDiet = [65, 67];
+const rangeFood = [68, 93];
+const rangeDrink = [94, 109];
+
 window.addEventListener('load', function () {
     var headers;
     var dataUsers;
@@ -6,12 +12,13 @@ window.addEventListener('load', function () {
     //console.log(dbData);
     processData(dbData);
 
-    calculateKNN();
+    calculateRecommendation();
 });
 
 function processData(allText) {
     var allTextLines = allText.split('\n');
     headers = allTextLines[0].split(',');
+    console.log(headers);
     dataUsers = [];
     for (let index = 1; index < allTextLines.length; index++) {
         const user = allTextLines[index].split(',');
@@ -19,15 +26,13 @@ function processData(allText) {
     }
 }
 
-
-function calculateKNN() {
+function calculateRecommendation() {
     var btn = document.querySelector('.button');
     btn.addEventListener('click', function () {
         this.preventDefault;
         var selUser = document.querySelector('.user-selector');
         var userIndex;
         var userName;
-        var quantityNeighbors;
         for (let index = 0; index < selUser.options.length; index++) {
             const opt = selUser.options[index];
             if (opt.selected == true && opt.innerHTML != 'Select an User') {
@@ -37,12 +42,8 @@ function calculateKNN() {
                 break;
             }
         }
-        var quantityTag = document.querySelector('.quantity');
-        if (quantityTag.value != "") {
-            quantityNeighbors = parseInt(quantityTag.value);
-        }
-        if (quantityNeighbors != null && quantityNeighbors > 0 && userName != null && userIndex != null) {
-            generateKNNResult(userName, userIndex, quantityNeighbors);
+        if (userName != null && userIndex != null) {
+            generateRecommendationResult(userName, userIndex);
         } else {
             btn.style.animation = 'wiggle 700ms';
             setTimeout(function () { btn.style.animation = 'none'; }, 700);
@@ -50,60 +51,83 @@ function calculateKNN() {
     });
 }
 
-function generateKNNResult(userName, userIndex, quantityNeighbors) {
-    var dataNeighbors = [];
-    console.log('userIndex: ' + userIndex);
-    var userSelected = dataUsers[userIndex];
-    for (let index = 0; index < dataUsers.length; index++) {
-        if (index != userIndex) {
-            var neighbor = dataUsers[index];
-            var d1xd2 = 0;
-            var magD1 = 0;
-            var magD2 = 0;
-            for (let k = 2; k < neighbor.length; k++) {
-                d1xd2 += (parseInt(userSelected[k]) * parseInt(neighbor[k]));
-                magD1 += (parseInt(userSelected[k]) * parseInt(userSelected[k]));
-                magD2 += (parseInt(neighbor[k]) * parseInt(neighbor[k]));
-            }
-            magD1 = Math.sqrt(magD1);
-            magD2 = Math.sqrt(magD2);
-            var cosCloseness = parseInt((d1xd2 / (magD1 * magD2)) * 100);
-            var objNeighbor = {
-                name: neighbor[1],
-                cosCloseness: cosCloseness
-            }
-            dataNeighbors.push(objNeighbor);
+function generateRecommendationResult(userName, userIndex) {
+    const dataUser = dataUsers[userIndex];
+    console.log('/// length data user: ' + dataUser.length);
+    const dataMusicGenre = dataUser.slice(rangeMusicGenre[0], rangeMusicGenre[1]);
+    const dataArtist = dataUser.slice(rangeArtist[0], rangeArtist[1]);
+    const dataDiet = dataUser.slice(rangeDiet[0], rangeDiet[1]);
+    const dataFood = dataUser.slice(rangeFood[0], rangeFood[1]);
+    const dataDrink = dataUser.slice(rangeDrink[0], rangeDrink[1]);
+    const valueExpected = 5;
+    var selMusicGenres = [];
+    var selArtists = [];
+    var selDiets = [];
+    var selFoods = [];
+    var selDrinks = [];
+    for (let index = 0; index < dataMusicGenre.length; index++) {
+        const objMusicGenre = {
+            name: headers[rangeMusicGenre[0] + index],
+            value: parseInt(dataMusicGenre[index])
         }
+        selMusicGenres.push(objMusicGenre);
     }
-    dataNeighbors.sort(compare);
-    console.log(dataNeighbors);
-    updateKNNUi(dataNeighbors, userName, quantityNeighbors);
+    for (let index = 0; index < dataArtist.length; index++) {
+        const objArtist = {
+            name: headers[rangeArtist[0] + index],
+            value: parseInt(dataArtist[index])
+        }
+        selArtists.push(objArtist);
+    }
+    for (let index = 0; index < dataDiet.length; index++) {
+        const objDiet = {
+            name: headers[rangeDiet[0] + index],
+            value: parseInt(dataDiet[index])
+        }
+        selDiets.push(objDiet);
+    }
+    for (let index = 0; index < dataFood.length; index++) {
+        const objFood = {
+            name: headers[rangeFood[0] + index],
+            value: parseInt(dataFood[index])
+        }
+        selFoods.push(objFood);
+    }
+    for (let index = 0; index < dataDrink.length; index++) {
+        const objDrink = {
+            name: headers[rangeDrink[0] + index],
+            value: parseInt(dataDrink[index])
+        }
+        selDrinks.push(objDrink);
+    }
+    selMusicGenres.sort(compare);
+    selArtists.sort(compare);
+    selDiets.sort(compare);
+    selFoods.sort(compare);
+    selDrinks.sort(compare);
+
+    updatePersonUi(userName, selMusicGenres[0].name, selArtists[0].name, selFoods[0].name, selDrinks[0].name);
 }
 
 function compare(a, b) {
-    const cosA = a.cosCloseness;
-    const cosB = b.cosCloseness;
+    const valueA = a.value;
+    const valueB = b.value;
     let comparison = 0;
-    if (cosA > cosB) {
+    if (valueA > valueB) {
         comparison = 1;
-    } else if (cosA < cosB) {
+    } else if (valueA < valueB) {
         comparison = -1;
     }
     return comparison * -1;
 }
 
-function updateKNNUi(dataNeighbors, userName, quantityNeighbors) {
+function updatePersonUi(userName, musicGenre, artist, food, drink) {
     var container = document.querySelector('.config-container');
-    var inner = '<p>The <span>' + quantityNeighbors + ' ideal friends</span> of <span>' + userName + '</span> for go to a festival are:</p>'
-        + '<ul>';
-    for (let index = 0; index < quantityNeighbors; index++) {
-        inner += '<li>' + dataNeighbors[index].name + ' ' + dataNeighbors[index].cosCloseness + '%</li>';
-    }
-    inner += '</ul>';
+    var inner = '<p>The Ideal Festival designed for <span>' + userName + '</span> should be based on the musical genre <span>' + musicGenre + '</span>, including the artist <span>' + artist + '</span>, and in addition it would be recommended to include food as <span>' + food + '</span> and drinks like <span>' + drink + '</span>.</p>';
     container.innerHTML = inner;
-    container.setAttribute('class', 'neighbors-container');
+    container.setAttribute('class', 'recommendation-container');
     document.querySelector('.button').remove();
-    document.querySelector('.main-knn').innerHTML += '<a href="/1" class="button reverse">RE-INITIALIZE KNN</a>'
+    document.querySelector('.main-knn').innerHTML += '<a href="/1" class="button reverse">RE-INITIALIZE RECOMMENDATION</a>'
     // Run Visual Interaction
     init();
 

@@ -93,7 +93,7 @@ select {
 select:hover {
   background-color: transparent;
   color: white;
-  padding: 15px 5px 15px 25px;
+  padding: 15px 5px 15px 15px;
 }
 
 select option {
@@ -101,7 +101,7 @@ select option {
   color: gray;
   width: 380px;
   padding: 10px 15px;
-  height: 20px;
+  height: 15px;
   cursor: pointer;
 }
 
@@ -124,6 +124,7 @@ select option:hover {
   transition: all 500ms ease;
   margin-bottom: 2rem;
   font-size: 30px;
+  cursor: pointer;
 }
 
 .start-button:hover {
