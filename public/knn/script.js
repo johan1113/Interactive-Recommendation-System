@@ -2,7 +2,7 @@ window.addEventListener('load', function () {
     var headers;
     var dataUsers;
 
-    var dbData = document.querySelector("#ccc").getAttribute('data-name');
+    var dbData = document.querySelector("#ccc").getAttribute('data-db');
     //console.log(dbData);
     processData(dbData);
 
@@ -35,6 +35,7 @@ function calculateKNN() {
             const opt = selUser.options[index];
             if (opt.selected == true && opt.innerHTML != 'Select an User') {
                 userIndex = parseInt(opt.value);
+                console.log('///// UserIndex: '+userIndex);
                 userName = opt.innerHTML;
                 break;
             }
@@ -52,13 +53,60 @@ function calculateKNN() {
     });
 }
 
-function generateKNNResult(userName, userIndex, quantityNeighbors){
+function generateKNNResult(userName, userIndex, quantityNeighbors) {
+    var dataNeighbors = [];
+    console.log('userIndex: '+userIndex);
     var userSelected = dataUsers[userIndex];
     for (let index = 0; index < dataUsers.length; index++) {
-        if(index != userIndex){
-            
-        }        
+        if (index != userIndex) {
+            var neighbor = dataUsers[index];
+            var d1xd2 = 0;
+            var magD1 = 0;
+            var magD2 = 0;
+            for (let k = 2; k < neighbor.length; k++) {
+                d1xd2 += (parseInt(userSelected[k]) * parseInt(neighbor[k]));
+                magD1 += (parseInt(userSelected[k]) * parseInt(userSelected[k]));
+                magD2 += (parseInt(neighbor[k]) * parseInt(neighbor[k]));
+            }
+            magD1 = Math.sqrt(magD1);
+            magD2 = Math.sqrt(magD2);
+            var cosCloseness = parseInt((d1xd2 / (magD1 * magD2)) * 100);
+            var objNeighbor = {
+                name: neighbor[1],
+                cosCloseness: cosCloseness
+            }
+            dataNeighbors.push(objNeighbor);
+            dataNeighbors.sort(compare);
+        }
     }
+    console.log(dataNeighbors);
+    updateKNNUi(dataNeighbors, userName, quantityNeighbors);
+}
+
+function compare(a, b) {
+    const cosA = a.cosCloseness;
+    const cosB = b.cosCloseness;
+    let comparison = 0;
+    if (cosA > cosB) {
+        comparison = 1;
+    } else if (cosA < cosB) {
+        comparison = -1;
+    }
+    return comparison * -1;
+}
+
+function updateKNNUi(dataNeighbors, userName, quantityNeighbors) {
+    var container = document.querySelector('.config-container');
+    var inner = '<h1>The ' + quantityNeighbors + ' ideal friends of ' + userName + ' for go to a festival are:</h1>'
+        + '<ul>';
+    for (let index = 0; index < quantityNeighbors; index++) {
+        inner += '<li>' + dataNeighbors[index].name + ' ' + dataNeighbors[index].cosCloseness + '%</li>';
+    }
+    inner += '</ul>';
+    container.innerHTML = inner;
+    container.setAttribute('class', 'neighbors-container');
+    document.querySelector('.button').remove();
+    document.querySelector('.main-knn').innerHTML += '<a href="/1" class="button reverse">RE-INITIALIZE KNN</a>'
 }
 
 window.setInterval(onCanvasClick, 6000);
@@ -71,7 +119,6 @@ var Configs = {
     base: 6000,
     zInc: 0.00009
 };
-
 
 // Vars
 var fadeTime = 2000; // in ms

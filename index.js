@@ -15,9 +15,8 @@ const file = require('file-system');
 const fs = require('fs');
 
 var headers;
-var dataUsers = [];
 
-function processData(allText) {
+function processData(allText, dataUsers) {
     var allTextLines = allText.split('\n');
     headers = allTextLines[0].split(',');
     for (let index = 1; index < allTextLines.length; index++) {
@@ -43,8 +42,10 @@ app.get('/1', function (request, response) {
     console.log('entro a knn');
     fs.readFile('./public/data/db.txt', 'utf-8', (err, dbData) => {
         if (err) throw err;
-        processData(dbData);
+        var dataUsers = [];
+        processData(dbData, dataUsers);
         var userNames = [];
+        console.log('length: '+dataUsers.length);
         for (let index = 0; index < dataUsers.length; index++) {
             const user = dataUsers[index];
             const objUser = {
