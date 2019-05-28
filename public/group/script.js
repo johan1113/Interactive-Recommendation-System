@@ -77,23 +77,31 @@ function generateRecommendationResult(usersSelected, algorithmSelected) {
         var deviation = 0;
         var values = [];
         for (let k = 0; k < usersSelected.length; k++) {
-            var userSelected = usersSelected[k];
+            var userSelected = dataUsers[usersSelected[k].index];
             console.log('user selected:');
             console.log(userSelected);
+            console.log('user selected value:');
+            console.log(userSelected[i]);
             prom += parseInt(userSelected[i]);
-            values.push(userSelected[i]);
+            values.push(parseInt(userSelected[i]));
         }
         prom = parseFloat(prom / usersSelected.length);
-        console.log('promedio: '+prom);
+        console.log('promedio: ' + prom);
         // de menor a mayor
         values.sort(function (a, b) { return a - b });
         var minValue = values[0];
-        var maxValue = values[values.length];
+        var maxValue = values[values.length-1];
         for (let k = 0; k < usersSelected.length; k++) {
-            const userSelected = usersSelected[k];
-            deviation += (parseFloat(userSelected[i] - prom));
+            const userSelected = dataUsers[usersSelected[k].index];
+            deviation += Math.pow(parseFloat(parseInt(userSelected[i]) - prom), 2);
         }
         deviation = parseFloat(Math.sqrt(deviation / (usersSelected.length - 1)));
+        console.log('/// desviación estandar: ');
+        console.log(deviation);
+        console.log('/// Minimo:');
+        console.log(minValue);
+        console.log('/// Máximo:');
+        console.log(maxValue);
         var realSatisfaction = parseFloat((prom) - ((deviation + ((maxValue - minValue) / 2)) / (usersSelected.length - 1)));
         var objItem = {
             name: headerName,
