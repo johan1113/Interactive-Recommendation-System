@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap');
+
+$background-color: #030722;
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100vw;
+    height: 100vh
+}
+
+canvas {
+    background-color: $background-color;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.main-group {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: absolute;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    & .title {
+        font-family: 'Rajdhani';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 50px;
+        line-height: 26px;
+        letter-spacing: 0.415em;
+        color: white;
+    }
+
+    & .config-container {
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+        justify-content: space-around;
+
+        & div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & h3 {
+                color: white;
+                font-family: 'Raleway';
+                font-weight: 400;
+                font-size: 20px;
+                margin-bottom: 40px;
+
+                & span {
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

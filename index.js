@@ -83,4 +83,31 @@ app.get('/2', function (request, response) {
     });
 });
 
+//Ideal Festival For a Group
+app.get('/3', function (request, response) {
+    console.log('entro a Ideal Festival For a Group');
+    fs.readFile('./public/data/db.txt', 'utf-8', (err, dbData) => {
+        if (err) throw err;
+        var dataUsers = [];
+        processData(dbData, dataUsers);
+        var userNames = [];
+        console.log('length: ' + dataUsers.length);
+        for (let index = 0; index < dataUsers.length; index++) {
+            const user = dataUsers[index];
+            const objUser = {
+                name: user[1],
+                index: index
+            }
+            userNames.push(objUser);
+        }
+        console.log(userNames);
+        var context = {
+            users: userNames,
+            data: dbData
+        }
+
+        response.render('group', context);
+    });
+});
+
 app.listen(8000);

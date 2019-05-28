@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css?family=Rajdhani:500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+canvas {
+  background-color: #030722;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.main-group {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  position: absolute;
+  background: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-group .title {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 26px;
+  letter-spacing: 0.415em;
+  color: white;
+}
+
+.main-group .config-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 70%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.main-group .config-container div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-group .config-container div h3 {
+  color: white;
+  font-family: 'Raleway';
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.main-group .config-container div h3 span {
+  font-weight: 600;
+}
+/*# sourceMappingURL=styles.css.map */

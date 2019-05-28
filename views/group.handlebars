@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./group/styles.css">
+    <link rel="stylesheet" href="./styles/reverse-btn.css">
+</head>
+
+<body>
+    <canvas id="ccc" data-db="{{data}}"></canvas>
+    <main class="main-group">
+        <h1 class="title">Ideal Festival For A Group</h1>
+        <section class="config-container">
+            <div>
+                <h3>Select multiple users with <span>CTRL + CLICK</span> :</h3>
+                <select multiple="multiple " size="3" class="users-selector">
+                    {{#each users}}
+                    <option value="{{index}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div>
+                <h3>Select one algorithm to use:</h3>
+                <select size="3" class="algorithm-selector">
+                    <option value="0">Maximum Pleasure</option>
+                    <option value="1">Without Misery</option>
+                    <option value="2">Minimal Misery</option>
+                </select>
+            </div>
+        </section>
+        <a class="button reverse">
+            START CALCULATION
+        </a>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js.map"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"></script>
+    <script src="./group/script.js"></script>
+</body>
+
+</html>
