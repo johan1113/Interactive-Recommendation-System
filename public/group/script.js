@@ -1,8 +1,8 @@
-const rangeMusicGenre = [3, 18];
-const rangeArtist = [19, 64];
-const rangeDiet = [65, 67];
-const rangeFood = [68, 93];
-const rangeDrink = [94, 109];
+const rangeMusicGenre = [3, 19];
+const rangeArtist = [19, 65];
+const rangeDiet = [65, 68];
+const rangeFood = [68, 94];
+const rangeDrink = [94, 110];
 
 window.addEventListener('load', function () {
     var headers;
@@ -71,7 +71,7 @@ function generateRecommendationResult(usersSelected, algorithmSelected) {
     var selFoods = [];
     var selDrinks = [];
 
-    for (let i = 3; i <= 109; i++) {
+    for (let i = 3; i <= 110; i++) {
         const headerName = headers[i];
         var prom = 0;
         var deviation = 0;
@@ -109,15 +109,15 @@ function generateRecommendationResult(usersSelected, algorithmSelected) {
             deviation: deviation,
             prom: prom
         }
-        if (i >= rangeMusicGenre[0] && i <= rangeMusicGenre[1]) {
+        if (i >= rangeMusicGenre[0] && i < rangeMusicGenre[1]) {
             selMusicGenres.push(objItem);
-        } else if (i >= rangeArtist[0] && i <= rangeArtist[1]) {
+        } else if (i >= rangeArtist[0] && i < rangeArtist[1]) {
             selArtists.push(objItem);
-        } else if (i >= rangeDiet[0] && i <= rangeDiet[1]) {
+        } else if (i >= rangeDiet[0] && i < rangeDiet[1]) {
             selDiets.push(objItem);
-        } else if (i >= rangeFood[0] && i <= rangeFood[1]) {
+        } else if (i >= rangeFood[0] && i < rangeFood[1]) {
             selFoods.push(objItem);
-        } else if (i >= rangeDrink[0] && i <= rangeDrink[1]) {
+        } else if (i >= rangeDrink[0] && i < rangeDrink[1]) {
             selDrinks.push(objItem);
         }
     }
@@ -327,7 +327,7 @@ function init(selMGF, selAS, selFS, selDF) {
         pProm += parseFloat(selFS.prom);
         pDev += parseFloat(selFS.deviation);
     }
-    if (selMGF != null) {
+    if (selDF != null) {
         freq++;
         pSatis += parseFloat(selDF.satisfaction);
         pProm += parseFloat(selDF.prom);

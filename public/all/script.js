@@ -1,8 +1,8 @@
-const rangeMusicGenre = [3, 18];
-const rangeArtist = [19, 64];
-const rangeDiet = [65, 67];
-const rangeFood = [68, 93];
-const rangeDrink = [94, 109];
+const rangeMusicGenre = [3, 19];
+const rangeArtist = [19, 65];
+const rangeDiet = [65, 68];
+const rangeFood = [68, 94];
+const rangeDrink = [94, 110];
 
 window.addEventListener('load', function () {
     var headers;

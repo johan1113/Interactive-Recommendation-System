@@ -56,16 +56,20 @@ canvas {
 }
 
 .main-music_genre .config-container {
+  width: 70%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: 70%;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .main-music_genre .config-container h3 {
@@ -83,7 +87,7 @@ canvas {
 .main-music_genre .recommendation-container {
   width: 70%;
   color: rgba(255, 255, 255, 0.8);
-  text-align: left;
+  text-align: center;
   font-family: 'Raleway';
   font-weight: 400;
   font-size: 20px;
@@ -96,13 +100,6 @@ canvas {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.main-music_genre .recommendation-container ul {
-  height: 120px;
-  width: 30%;
-  overflow-y: scroll;
-  color: white;
 }
 
 .main-music_genre .recommendation-container p {

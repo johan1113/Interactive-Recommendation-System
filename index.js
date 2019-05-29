@@ -140,7 +140,7 @@ app.get('/4', function (request, response) {
 //Ideal Festival For A Music Genre
 app.get('/5', function (request, response) {
     console.log('entro a Ideal Festival For a Group');
-    const rangeMusicGenre = [3, 18];
+    const rangeMusicGenre = [3, 19];
     fs.readFile('./public/data/db.txt', 'utf-8', (err, dbData) => {
         if (err) throw err;
         var dataUsers = [];
@@ -165,13 +165,13 @@ app.get('/5', function (request, response) {
             }
             objectsMG.push(objMG);
         } 
-        console.log(userNames);
+        console.log(musicGenreNames);
+        console.log('length: '+musicGenreNames.length)
         var context = {
             users: userNames,
             data: dbData,
             musicGenres: objectsMG
         }
-
         response.render('music_genre', context);
     });
 });

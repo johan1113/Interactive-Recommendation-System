@@ -53,11 +53,11 @@ canvas {
     }
 
     & .config-container {
-        display: flex;
-        flex-direction: row;
         width: 70%;
-        justify-content: space-around;
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
         & h3 {
             color: white;
@@ -76,24 +76,16 @@ canvas {
     & .recommendation-container {
         width: 70%;
         color: rgba(255, 255, 255, 0.8);
-        text-align: left;
+        text-align: center;
         font-family: 'Raleway';
         font-weight: 400;
         font-size: 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        & ul {
-            height: 120px;
-            width: 30%;
-            overflow-y: scroll;
-            color: white;
-        }
-
         & p {
             margin-left: 40px;
-            width: 70%
+            width: 70%;
         }
 
         & span {
