@@ -110,4 +110,70 @@ app.get('/3', function (request, response) {
     });
 });
 
+//Ideal Festival For All
+app.get('/4', function (request, response) {
+    console.log('entro a Ideal Festival For a Group');
+    fs.readFile('./public/data/db.txt', 'utf-8', (err, dbData) => {
+        if (err) throw err;
+        var dataUsers = [];
+        processData(dbData, dataUsers);
+        var userNames = [];
+        console.log('length: ' + dataUsers.length);
+        for (let index = 0; index < dataUsers.length; index++) {
+            const user = dataUsers[index];
+            const objUser = {
+                name: user[1],
+                index: index
+            }
+            userNames.push(objUser);
+        }
+        console.log(userNames);
+        var context = {
+            users: userNames,
+            data: dbData
+        }
+
+        response.render('all', context);
+    });
+});
+
+//Ideal Festival For A Music Genre
+app.get('/5', function (request, response) {
+    console.log('entro a Ideal Festival For a Group');
+    const rangeMusicGenre = [3, 18];
+    fs.readFile('./public/data/db.txt', 'utf-8', (err, dbData) => {
+        if (err) throw err;
+        var dataUsers = [];
+        processData(dbData, dataUsers);
+        var userNames = [];
+        console.log('length: ' + dataUsers.length);
+        for (let index = 0; index < dataUsers.length; index++) {
+            const user = dataUsers[index];
+            const objUser = {
+                name: user[1],
+                index: index
+            }
+            userNames.push(objUser);
+        }
+        const musicGenreNames = headers.slice(rangeMusicGenre[0],rangeMusicGenre[1]);
+        var objectsMG = []
+        for (let index = 0; index < musicGenreNames.length; index++) {
+            const genreName = musicGenreNames[index];
+            const objMG = {
+                name: genreName,
+                index : (index+rangeMusicGenre[0])
+            }
+            objectsMG.push(objMG);
+        } 
+        console.log(userNames);
+        var context = {
+            users: userNames,
+            data: dbData,
+            musicGenres: objectsMG
+        }
+
+        response.render('music_genre', context);
+    });
+});
+
 app.listen(8000);

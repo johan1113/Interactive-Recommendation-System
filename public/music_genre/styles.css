@@ -22,7 +22,7 @@ canvas {
   position: absolute;
 }
 
-.main-knn {
+.main-music_genre {
   width: 100%;
   height: 100%;
   z-index: 10;
@@ -40,10 +40,9 @@ canvas {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: 'Rajdhani';
 }
 
-.main-knn .title {
+.main-music_genre .title {
   font-family: 'Rajdhani';
   font-style: normal;
   font-weight: 500;
@@ -56,7 +55,7 @@ canvas {
   margin: 0 40px;
 }
 
-.main-knn .config-container {
+.main-music_genre .config-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -64,23 +63,55 @@ canvas {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-}
-
-.main-knn .config-container .user-selector {
-  width: 280px;
-  margin-right: 40px;
-}
-
-.main-knn .recommendation-container {
   width: 70%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.main-music_genre .config-container h3 {
   color: white;
-  text-align: center;
   font-family: 'Raleway';
   font-weight: 400;
   font-size: 20px;
+  margin-bottom: 40px;
 }
 
-.main-knn .recommendation-container span {
+.main-music_genre .config-container h3 span {
   font-weight: 600;
+}
+
+.main-music_genre .recommendation-container {
+  width: 70%;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+  font-family: 'Raleway';
+  font-weight: 400;
+  font-size: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-music_genre .recommendation-container ul {
+  height: 120px;
+  width: 30%;
+  overflow-y: scroll;
+  color: white;
+}
+
+.main-music_genre .recommendation-container p {
+  margin-left: 40px;
+  width: 70%;
+}
+
+.main-music_genre .recommendation-container span {
+  font-weight: 600;
+  color: white;
 }
 /*# sourceMappingURL=styles.css.map */

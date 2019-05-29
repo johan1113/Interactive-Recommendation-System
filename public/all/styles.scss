@@ -28,7 +28,8 @@ canvas {
     position: absolute;
 }
 
-.main-knn {
+.main-all {
+
     width: 100%;
     height: 100%;
     z-index: 10;
@@ -38,7 +39,6 @@ canvas {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    font-family: 'Rajdhani';
 
     & .title {
         font-family: 'Rajdhani';
@@ -54,25 +54,51 @@ canvas {
     }
 
     & .config-container {
+        width: 70%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        align-items: center;
 
-        & .user-selector {
-            width: 280px;
-            margin-right: 40px;
+        & h3 {
+            color: white;
+            font-family: 'Raleway';
+            font-weight: 400;
+            font-size: 20px;
+            margin-bottom: 40px;
+
+            & span {
+                font-weight: 600;
+            }
         }
+
     }
 
     & .recommendation-container {
         width: 70%;
-        color: white;
-        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+        text-align: left;
         font-family: 'Raleway';
         font-weight: 400;
         font-size: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & ul {
+            height: 120px;
+            width: 30%;
+            overflow-y: scroll;
+            color: white;
+        }
+
+        & p {
+            margin-left: 40px;
+            width: 70%
+        }
 
         & span {
             font-weight: 600;
+            color: white;
         }
     }
 }

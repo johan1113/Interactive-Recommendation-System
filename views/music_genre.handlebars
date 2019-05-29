@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ARTECH DATA</title>
-    <link rel="stylesheet" href="./person/styles.css">
+    <link rel="stylesheet" href="./music_genre/styles.css">
     <link rel="stylesheet" href="./styles/reverse-btn.css">
 </head>
 
 <body>
     <canvas id="ccc" data-db="{{data}}"></canvas>
-    <main class="main-knn">
-        <h1 class="title">Ideal Festival For a Person</h1>
+    <main class="main-music_genre">
+        <h1 class="title">Ideal Festival For All The Users</h1>
         <section class="config-container">
-            <select va class="user-selector">
-                <option selected="selected" disabled>Select an User</option>
-                {{#each users}}
+            <h3>Select only one <span>Music Genre</span> :</h3>
+            <select size="5" class="music_genres-selector">
+                {{#each musicGenres}}
                 <option value="{{index}}">{{name}}</option>
                 {{/each}}
             </select>
@@ -31,7 +31,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js.map"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"></script>
-    <script src="./person/script.js"></script>
+    <script src="./music_genre/script.js"></script>
 </body>
 
 </html>
