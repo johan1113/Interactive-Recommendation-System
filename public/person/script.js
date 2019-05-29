@@ -130,7 +130,6 @@ function updatePersonUi(userName, musicGenre, artist, food, drink) {
     document.querySelector('.main-knn').innerHTML += '<a href="/1" class="button reverse">RE-INITIALIZE RECOMMENDATION</a>'
     // Run Visual Interaction
     init();
-
 }
 
 window.setInterval(onCanvasClick, 6000);

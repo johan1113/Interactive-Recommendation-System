@@ -89,4 +89,39 @@ canvas {
 .main-group .config-container div h3 span {
   font-weight: 600;
 }
+
+.main-group .recommendation-container {
+  width: 70%;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+  font-family: 'Raleway';
+  font-weight: 400;
+  font-size: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-group .recommendation-container ul {
+  height: 120px;
+  width: 30%;
+  overflow-y: scroll;
+  color: white;
+}
+
+.main-group .recommendation-container p {
+  margin-left: 40px;
+  width: 70%;
+}
+
+.main-group .recommendation-container span {
+  font-weight: 600;
+  color: white;
+}
 /*# sourceMappingURL=styles.css.map */
