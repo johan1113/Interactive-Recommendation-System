@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap");
+select {
+  background-color: white;
+  font-family: 'Raleway';
+  font-size: 15px;
+}
+
+/*style the items (options), including the selected item:*/
+option {
+  color: grey;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-weight: 400;
+}
+
+option:checked {
+  color: #030722;
+  font-weight: 600;
+}
+
+option:hover {
+  color: #030722;
+  font-weight: 600;
+}
+
+input {
+  height: 30px;
+  background-color: white;
+  font-family: 'Raleway';
+  font-size: 15px;
+  color: #030722;
+  padding: 8px 16px;
+  font-weight: 600;
+}
+
+#one {
+  height: 48px;
+  background-color: white;
+  font-family: 'Raleway';
+  font-size: 15px;
+  color: #030722;
+  padding: 8px 16px;
+}
+/*# sourceMappingURL=select.css.map */

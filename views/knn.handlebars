@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./knn/styles.css">
     <link rel="stylesheet" href="./styles/reverse-btn.css">
     <link rel="stylesheet" href="./styles/back-btn.css">
+    <link rel="stylesheet" href="./styles/select.css">
 </head>
 
 <body>
@@ -16,13 +17,13 @@
     <main class="main-knn">
         <h1 class="title">KNN</h1>
         <section class="config-container">
-            <select va class="user-selector">
+            <select class="user-selector" id="one">
                 <option selected="selected" disabled>Select an User</option>
                 {{#each users}}
                 <option value="{{index}}">{{name}}</option>
                 {{/each}}
             </select>
-            <input class="quantity" type="number" placeholder="How many neighbors do you want to see?">
+            <input class="quantity" type="number" placeholder="Number of Neighbors">
         </section>
         <a class="button reverse">
             START KNN

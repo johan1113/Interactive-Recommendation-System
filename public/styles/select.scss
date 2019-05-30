@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap');
+$background-color: #030722;
+
+select {
+    background-color: white;
+    font-family: 'Raleway';
+    font-size: 15px;
+}
+
+/*style the items (options), including the selected item:*/
+option {
+    color: grey;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 400;
+}
+
+option:checked {
+    color: $background-color;
+    font-weight: 600;
+}
+
+option:hover {
+    color: $background-color;
+    font-weight: 600;
+}
+
+input {
+    height: 30px;
+    background-color: white;
+    font-family: 'Raleway';
+    font-size: 15px;
+    color: $background-color;
+    padding: 8px 16px;
+    font-weight: 600;
+}
+
+#one {
+    height: 48px;
+    background-color: white;
+    font-family: 'Raleway';
+    font-size: 15px;
+    color: $background-color;
+    padding: 8px 16px;
+}
