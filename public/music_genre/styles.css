@@ -73,7 +73,7 @@ canvas {
 }
 
 .main-music_genre .config-container h3 {
-  color: white;
+  color: rgba(255, 255, 255, 0.8);
   font-family: 'Raleway';
   font-weight: 400;
   font-size: 20px;
@@ -81,6 +81,7 @@ canvas {
 }
 
 .main-music_genre .config-container h3 span {
+  color: white;
   font-weight: 600;
 }
 

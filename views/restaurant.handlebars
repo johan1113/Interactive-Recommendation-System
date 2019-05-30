@@ -6,39 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ARTECH DATA</title>
-    <link rel="stylesheet" href="./knn/styles.css">
+    <link rel="stylesheet" href="./restaurant/styles.css">
     <link rel="stylesheet" href="./styles/reverse-btn.css">
-    <link rel="stylesheet" href="./styles/back-btn.css">
 </head>
 
 <body>
     <canvas id="ccc" data-db="{{data}}"></canvas>
-    <main class="main-knn">
-        <h1 class="title">KNN</h1>
+    <main class="main-restaurant">
+        <h1 class="title">IDEAL RESTAURANT EXPERIENCE</h1>
         <section class="config-container">
-            <select va class="user-selector">
-                <option selected="selected" disabled>Select an User</option>
+            <h3>Select all the people that want to go to your restaurant. Remember to select multiple users with <span>CTRL + CLICK</span>.</h3>
+            <select multiple="multiple " size="3" class="users-selector">
                 {{#each users}}
                 <option value="{{index}}">{{name}}</option>
                 {{/each}}
             </select>
-            <input class="quantity" type="number" placeholder="How many neighbors do you want to see?">
         </section>
         <a class="button reverse">
-            START KNN
+            START YOUR EXPERIENCE
         </a>
     </main>
-    <a href="/" class="outer">
-        <div class="inner">
-            <label>Back</label>
-        </div>
-    </a>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js.map"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"></script>
-    <script src="./knn/script.js"></script>
+    <script src="./restaurant/script.js"></script>
 </body>
 
 </html>

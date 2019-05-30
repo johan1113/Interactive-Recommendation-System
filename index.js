@@ -139,7 +139,7 @@ app.get('/4', function (request, response) {
 
 //Ideal Festival For A Music Genre
 app.get('/5', function (request, response) {
-    console.log('entro a Ideal Festival For a Group');
+    console.log('entro a Ideal Festival For A Music Genre');
     const rangeMusicGenre = [3, 19];
     fs.readFile('./public/data/db.txt', 'utf-8', (err, dbData) => {
         if (err) throw err;
@@ -173,6 +173,32 @@ app.get('/5', function (request, response) {
             musicGenres: objectsMG
         }
         response.render('music_genre', context);
+    });
+});
+
+//IDEAL RESTAURANT EXPERIENCE
+app.get('/6', function (request, response) {
+    console.log('entro a IDEAL RESTAURANT EXPERIENCE');
+    fs.readFile('./public/data/db.txt', 'utf-8', (err, dbData) => {
+        if (err) throw err;
+        var dataUsers = [];
+        processData(dbData, dataUsers);
+        var userNames = [];
+        console.log('length: ' + dataUsers.length);
+        for (let index = 0; index < dataUsers.length; index++) {
+            const user = dataUsers[index];
+            const objUser = {
+                name: user[1],
+                index: index
+            }
+            userNames.push(objUser);
+        }
+        console.log(userNames);
+        var context = {
+            users: userNames,
+            data: dbData
+        }
+        response.render('restaurant', context);
     });
 });
 

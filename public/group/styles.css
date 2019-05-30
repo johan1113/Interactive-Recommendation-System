@@ -82,7 +82,7 @@ canvas {
 }
 
 .main-group .config-container div h3 {
-  color: white;
+  color: rgba(255, 255, 255, 0.8);
   font-family: 'Raleway';
   font-weight: 400;
   font-size: 20px;
@@ -91,6 +91,7 @@ canvas {
 
 .main-group .config-container div h3 span {
   font-weight: 600;
+  color: white;
 }
 
 .main-group .recommendation-container {

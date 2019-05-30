@@ -1,4 +1,4 @@
-var serviceOptions = ['What service would you like to use ?', 'KNN', 'Ideal Festival For A Person' ,'Ideal Festival For A Group', 'Ideal Festival For All', 'Music Genre Ideal Festival', 'OUR PRODUCT'];
+var serviceOptions = ['What service would you like to use ?', 'KNN', 'Ideal Festival For A Person' ,'Ideal Festival For A Group', 'Ideal Festival For All', 'Music Genre Ideal Festival', 'IDEAL RESTAURANT EXPERIENCE'];
 
 window.addEventListener('load', function () {
     // Run Visual Interaction
