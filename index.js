@@ -28,7 +28,7 @@ function processData(allText, dataUsers) {
 //defninir ruta root o principal
 app.get('/', function (request, response) {
     console.log("home");
-    response.render('home');
+    response.render('home' , {layout: false});
 });
 //KNN
 app.get('/1', function (request, response) {
@@ -50,7 +50,8 @@ app.get('/1', function (request, response) {
         console.log(userNames);
         var context = {
             users: userNames,
-            data: dbData
+            data: dbData,
+            layout: false
         }
 
         response.render('knn', context);
@@ -76,7 +77,8 @@ app.get('/2', function (request, response) {
         console.log(userNames);
         var context = {
             users: userNames,
-            data: dbData
+            data: dbData,
+            layout: false
         }
 
         response.render('person', context);
@@ -103,7 +105,8 @@ app.get('/3', function (request, response) {
         console.log(userNames);
         var context = {
             users: userNames,
-            data: dbData
+            data: dbData,
+            layout: false
         }
 
         response.render('group', context);
@@ -130,7 +133,8 @@ app.get('/4', function (request, response) {
         console.log(userNames);
         var context = {
             users: userNames,
-            data: dbData
+            data: dbData,
+            layout: false
         }
 
         response.render('all', context);
@@ -170,7 +174,8 @@ app.get('/5', function (request, response) {
         var context = {
             users: userNames,
             data: dbData,
-            musicGenres: objectsMG
+            musicGenres: objectsMG,
+            layout: false
         }
         response.render('music_genre', context);
     });
@@ -196,7 +201,8 @@ app.get('/6', function (request, response) {
         console.log(userNames);
         var context = {
             users: userNames,
-            data: dbData
+            data: dbData,
+            layout: false
         }
         response.render('restaurant', context);
     });
